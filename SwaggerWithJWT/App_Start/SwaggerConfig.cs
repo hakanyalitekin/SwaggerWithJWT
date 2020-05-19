@@ -20,7 +20,7 @@ namespace SwaggerWithJWT
                 .EnableSwagger(c =>
                     {
 
-                        c.SingleApiVersion("v1", "SwaggerWithJWT");
+                        c.SingleApiVersion("v1", "Swagger With JWT (Ýstenilen herhangi bir isim verilebilir.)");
 
                         //Token için eklendi.
                         c.ApiKey("Authorization")

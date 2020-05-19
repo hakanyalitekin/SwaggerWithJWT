@@ -17,9 +17,9 @@ namespace SwaggerWithJWT.Controllers
         {
             string result;
             string token;
-            if (CheckUser(user))
+              
+            if (user.UserName == "admin" && user.Password == "1234")
             {
-          
                 token = JwtManager.GenerateToken(user.UserName);
                 result = token;
             }
@@ -29,18 +29,6 @@ namespace SwaggerWithJWT.Controllers
             }
 
             return Json(result);
-        }
-
-        bool CheckUser(User user)
-        {
-            if (user != null)
-            {
-                if (user.UserName  == "admin" && user.Password == "1234")
-                    return true;
-
-            }
-
-            return false;
         }
     }
 }

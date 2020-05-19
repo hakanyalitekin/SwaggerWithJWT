@@ -12,10 +12,6 @@ namespace SwaggerWithJWT.Controllers
     public class HomeController : ApiController
     {
         // GET: api/Home
-        /// <summary>
-        /// Deneme
-        /// </summary>
-        /// <returns></returns>
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };

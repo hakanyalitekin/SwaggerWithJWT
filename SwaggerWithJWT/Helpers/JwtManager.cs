@@ -1,10 +1,7 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
-using System.Web;
 
 namespace SwaggerWithJWT.Helpers
 {
@@ -27,8 +24,8 @@ namespace SwaggerWithJWT.Helpers
             {
                 Subject = new ClaimsIdentity(new[]
                         {
-                            new Claim(ClaimTypes.Name, username),
-                            new Claim(ClaimTypes.Role, "Role")
+                            new Claim(ClaimTypes.Name, username), //Oturum açan kullanıcı adını ya da maili bu aşamada ekleniyor
+                            new Claim(ClaimTypes.Role, "Role") // İstenirse rol/roller eklenebilir.
                         }),
 
                 Expires = now.AddMinutes(Convert.ToInt32(expireMinutes)),
@@ -60,7 +57,7 @@ namespace SwaggerWithJWT.Helpers
                     RequireExpirationTime = true,
                     ValidateIssuer = false,
                     ValidateAudience = false,
-                    LifetimeValidator = LifetimeValidator,
+                    LifetimeValidator = LifetimeValidator, //Token'nın geçerlilik zamanını kontrol ediyoruz.
                     IssuerSigningKey = new SymmetricSecurityKey(symmetricKey)
                 };
 
@@ -74,6 +71,7 @@ namespace SwaggerWithJWT.Helpers
                 return null;
             }
         }
+
         //Token'nın geçerlilik zamanını kontrol ediyoruz.
         static bool LifetimeValidator(DateTime? notBefore, DateTime? expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
         {
