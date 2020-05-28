@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace SwaggerWithJWT.Controllers
 {
-    //[JWTAuthentication]
+    [JWTAuthentication]
     public class HomeController : ApiController
     {
         // GET: api/Home
@@ -22,11 +22,11 @@ namespace SwaggerWithJWT.Controllers
 
 
         #region FileUpload
-        [Route("api/Home/UploadBoQFile")]
+        [Route("api/Home/FileUpload")]
         [HttpPost]
-        //[SwaggerParameter(Name ="Dosya", Description ="Excel dosyası", Required =true, Type ="file")]
+        //[SwaggerParameter(Name = "Dosya", Description = "Excel dosyası", Required = true, Type = "file")] //Parametreli örneği
         [SwaggerParameter]
-        public HttpResponseMessage UploadBoQFile()
+        public HttpResponseMessage FileUpload()
         {
             HttpPostedFile file = HttpContext.Current.Request.Files[0];
             var httpRequest = HttpContext.Current.Request;

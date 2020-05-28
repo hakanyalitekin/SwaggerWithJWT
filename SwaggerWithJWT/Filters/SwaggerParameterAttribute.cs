@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace SwaggerWithJWT.Filters
 {
-    [AttributeUsage(AttributeTargets.Method)]
+    //[AttributeUsage(AttributeTargets.Method)]
     public class SwaggerParameterAttribute:Attribute
     {
         public string Name { get; set; } = "File";
